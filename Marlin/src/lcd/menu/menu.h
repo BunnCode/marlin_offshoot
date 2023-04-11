@@ -214,8 +214,6 @@ void menu_move();
 //////// Menu Item Helper Functions ////////
 ////////////////////////////////////////////
 
-void lcd_move_axis(const AxisEnum);
-void lcd_move_z();
 void _lcd_draw_homing();
 
 #define HAS_LINE_TO_Z ANY(DELTA, PROBE_MANUALLY, MESH_BED_LEVELING, LCD_BED_TRAMMING)
@@ -266,7 +264,7 @@ inline void clear_menu_history() { screen_history_depth = 0; }
 #define STICKY_SCREEN(S) []{ ui.defer_status_screen(); ui.goto_screen(S); }
 
 #if HAS_LEVELING && ANY(LCD_BED_TRAMMING, PROBE_OFFSET_WIZARD, X_AXIS_TWIST_COMPENSATION)
-  extern bool leveling_was_active;
+  extern bool menu_leveling_was_active;
 #endif
 
 #if ANY(PROBE_MANUALLY, MESH_BED_LEVELING, X_AXIS_TWIST_COMPENSATION)
